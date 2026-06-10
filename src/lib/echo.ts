@@ -14,11 +14,11 @@ export const getEcho = () => {
   if (!echoInstance) {
     echoInstance = new Echo({
       broadcaster: "reverb",
-      key: "ebqjb5gcbwrmlk428asd",
-      wsHost: "localhost",
-      wsPort: 8080,
-      wssPort: 8080,
-      forceTLS: false,
+      key: process.env.NEXT_PUBLIC_REVERB_APP_KEY || "ebqjb5gcbwrmlk428asd",
+      wsHost: process.env.NEXT_PUBLIC_REVERB_HOST || "api.pinjemdong.my.id",
+      wsPort: Number(process.env.NEXT_PUBLIC_REVERB_PORT || 443),
+      wssPort: Number(process.env.NEXT_PUBLIC_REVERB_PORT || 443),
+      forceTLS: true,
       enabledTransports: ["ws", "wss"],
     });
   }
