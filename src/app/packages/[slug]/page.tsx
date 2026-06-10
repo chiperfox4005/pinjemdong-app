@@ -40,7 +40,7 @@ function getImageUrl(imagePath: string | null): string {
 export default function PackageDetailPage() {
   const { slug } = useParams();
   const router = useRouter();
-  const [pkg, setPkg] = useState<any>(null);
+  const [pkg, setPkg] = useState<Package | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [showCartWarning, setShowCartWarning] = useState(false);

@@ -14,8 +14,11 @@ interface Rental {
   total_amount: string;
   dp_amount: string;
   remaining_amount: string;
-  late_fee_amount?: string;
-  final_total_amount?: string;
+  late_fee_amount: string;
+  final_total_amount: string;
+  final_remaining_amount: string;
+  penalty_amount: string | number;
+  late_days: number;
   delivery_method: string;
   status: string;
   items: { product_id: number; product: { name: string; primary_image: object | null } }[];
@@ -57,7 +60,7 @@ export default function DashboardOrdersPage() {
   const [reviewPhoto, setReviewPhoto] = useState<File | null>(null);
 
   // Payment modal state
-  const [payModal, setPayModal] = useState<{ rentalId: number; totalAmount: string; dpAmount: string; remainingAmount: string } | null>(null);
+  const [payModal, setPayModal] = useState<{ rentalId: number; totalAmount: string | number; dpAmount: string | number; remainingAmount: string | number; penaltyAmount: string | number; lateDays: number; } | null>(null);
   const [payType, setPayType] = useState<"dp" | "full_payment" | "remaining">("dp");
   const [payAmount, setPayAmount] = useState("");
   const [payProof, setPayProof] = useState<File | null>(null);
