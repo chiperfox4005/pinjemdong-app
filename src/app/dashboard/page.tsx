@@ -557,23 +557,22 @@ export default function DashboardOrdersPage() {
                       </div>
 
                       <div style={{ marginBottom: "20px" }}>
-                        <label style={{ fontSize: "0.85rem", fontWeight: 600, display: "block", marginBottom: "12px" }}>Jumlah Transfer (Bisa disesuaikan)</label>
-                        <input
-                          type="number"
-                          value={payAmount}
-                          onChange={(e) => setPayAmount(e.target.value)}
-                          placeholder="Berapa yang Anda transfer?"
-                          style={{
-                            width: "100%", padding: "14px", borderRadius: "var(--radius-md)",
-                            border: "1.5px solid var(--border)", background: "var(--background-elevated)",
-                            color: "var(--foreground)", fontSize: "1rem", outline: "none", fontWeight: 600,
-                          }}
-                        />
-                        {payType === "dp" && paySummary && (
-                          <p style={{ fontSize: "0.75rem", color: "var(--warning)", marginTop: "8px", fontWeight: 600 }}>
-                            ⚠️ Minimal DP untuk pesanan ini: Rp {formatRupiah(paySummary.min_dp)}
-                          </p>
-                        )}
+                        <label style={{ fontSize: "0.85rem", fontWeight: 600, display: "block", marginBottom: "12px" }}>Nominal yang Harus Ditransfer</label>
+                        <div style={{
+                            width: "100%", padding: "16px", borderRadius: "var(--radius-md)",
+                            border: "1.5px solid var(--primary)", background: "var(--primary-light)",
+                            display: "flex", alignItems: "center", justifyContent: "space-between"
+                          }}>
+                          <div style={{ fontSize: "1.2rem", fontWeight: 800, color: "var(--primary)" }}>
+                            Rp {formatRupiah(Number(payAmount || 0))}
+                          </div>
+                          <div style={{ fontSize: "0.7rem", fontWeight: 800, background: "var(--primary)", color: "#fff", padding: "4px 8px", borderRadius: "6px", letterSpacing: "0.5px" }}>
+                            NOMINAL PASTI
+                          </div>
+                        </div>
+                        <p style={{ fontSize: "0.8rem", color: "var(--foreground-secondary)", marginTop: "10px", lineHeight: 1.4 }}>
+                          ℹ️ Sistem telah menghitung nominal ini secara otomatis berdasarkan pilihan pembayaran Anda (termasuk denda jika ada). Silakan transfer <b>tepat</b> sesuai angka di atas.
+                        </p>
                       </div>
 
                       <div style={{ marginBottom: "20px" }}>
