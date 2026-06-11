@@ -658,32 +658,40 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
 
             <div style={{ marginBottom: "20px" }}>
               <label style={{ fontSize: "0.85rem", fontWeight: 700, marginBottom: "8px", display: "block" }}>📅 Ketersediaan Barang</label>
-              <div className="calendar-wrapper">
-                <Calendar 
-                  selectRange={true}
-                  onChange={(val) => {
-                    if (Array.isArray(val)) {
-                      setDateRange(val as [Date, Date]);
-                      if (val[0] && val[1]) {
-                        // Adjust for timezone to get correct YYYY-MM-DD
-                        const start = new Date(val[0].getTime() - (val[0].getTimezoneOffset() * 60000)).toISOString().split("T")[0];
-                        const end = new Date(val[1].getTime() - (val[1].getTimezoneOffset() * 60000)).toISOString().split("T")[0];
-                        localStorage.setItem("pinjemdong-dates", JSON.stringify({ start, end }));
-                      }
-                    }
-                  }}
-                  value={dateRange as any}
-                  tileDisabled={({ date, view }) => {
-                    if (view !== 'month' || !product) return false;
-                    const d = new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toISOString().split("T")[0];
-                    
-                    // Hitung berapa unit yang sedang disewa pada tanggal d
-                    const overlaps = bookedDates.filter(b => d >= b.start_date && d <= b.end_date).length;
-                    
-                    // Disable hanya jika jumlah yang disewa >= total stok
-                    return overlaps >= product.available_units_count;
-                  }}
-                />
+              <div style={{ display: "flex", gap: "16px", marginBottom: "16px" }}>
+                <div style={{ flex: 1 }}>
+                  <label style={{ fontSize: "0.8rem", fontWeight: 700, marginBottom: "6px", display: "block", color: "var(--foreground-secondary)" }}>Tanggal Mulai</label>
+                  <input type="date" value={dateRange?.[0] ? new Date(dateRange[0].getTime() - (dateRange[0].getTimezoneOffset() * 60000)).toISOString().split("T")[0] : ""} 
+                    min={new Date().toISOString().split("T")[0]}
+                    onChange={(e) => {
+                      const newStart = new Date(e.target.value);
+                      const currentEnd = dateRange?.[1] || newStart;
+                      const safeEnd = newStart > currentEnd ? newStart : currentEnd;
+                      setDateRange([newStart, safeEnd]);
+                      localStorage.setItem("pinjemdong-dates", JSON.stringify({ 
+                        start: e.target.value, 
+                        end: new Date(safeEnd.getTime() - (safeEnd.getTimezoneOffset() * 60000)).toISOString().split("T")[0]
+                      }));
+                    }}
+                    style={{ width: "100%", padding: "10px", borderRadius: "var(--radius-md)", border: "1px solid var(--border)", background: "var(--background-elevated)", color: "var(--foreground)", outline: "none" }}
+                  />
+                </div>
+                <div style={{ flex: 1 }}>
+                  <label style={{ fontSize: "0.8rem", fontWeight: 700, marginBottom: "6px", display: "block", color: "var(--foreground-secondary)" }}>Tanggal Selesai</label>
+                  <input type="date" value={dateRange?.[1] ? new Date(dateRange[1].getTime() - (dateRange[1].getTimezoneOffset() * 60000)).toISOString().split("T")[0] : ""} 
+                    min={dateRange?.[0] ? new Date(dateRange[0].getTime() - (dateRange[0].getTimezoneOffset() * 60000)).toISOString().split("T")[0] : new Date().toISOString().split("T")[0]}
+                    onChange={(e) => {
+                      const newEnd = new Date(e.target.value);
+                      const currentStart = dateRange?.[0] || newEnd;
+                      setDateRange([currentStart, newEnd]);
+                      localStorage.setItem("pinjemdong-dates", JSON.stringify({ 
+                        start: new Date(currentStart.getTime() - (currentStart.getTimezoneOffset() * 60000)).toISOString().split("T")[0], 
+                        end: e.target.value
+                      }));
+                    }}
+                    style={{ width: "100%", padding: "10px", borderRadius: "var(--radius-md)", border: "1px solid var(--border)", background: "var(--background-elevated)", color: "var(--foreground)", outline: "none" }}
+                  />
+                </div>
               </div>
 
               <div style={{ display: "flex", gap: "16px", marginTop: "16px" }}>
