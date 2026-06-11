@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 
 const API_URL = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api");
 
@@ -50,6 +51,11 @@ const statusLabels: Record<string, { label: string; color: string; bg: string }>
 export default function DashboardOrdersPage() {
   const [rentals, setRentals] = useState<Rental[]>([]);
   const [loading, setLoading] = useState(true);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Review modal state
   const [reviewModal, setReviewModal] = useState<{ rentalId: number; productId: number; productName: string } | null>(null);
@@ -337,7 +343,7 @@ export default function DashboardOrdersPage() {
       </div>
 
       {/* Review Modal */}
-      {reviewModal && (
+      {mounted && reviewModal && createPortal(
         <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.5)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 9999, padding: "20px" }}>
           <div className="card" style={{ width: "100%", maxWidth: "460px", borderRadius: "var(--radius-lg)", padding: "32px" }}>
             <h3 style={{ fontWeight: 700, fontSize: "1.2rem", marginBottom: "8px" }}>⭐ Beri Ulasan</h3>
@@ -402,10 +408,10 @@ export default function DashboardOrdersPage() {
             </div>
           </div>
         </div>
-      )}
+      , document.body)}
 
       {/* Payment Modal */}
-      {payModal && (
+      {mounted && payModal && createPortal(
         <div onClick={(e) => { if (e.target === e.currentTarget) { setPayModal(null); setPayMsg(""); setPayProof(null); setPayHistory([]); setPaySummary(null); }}} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 9999, padding: "80px 16px 24px 16px" }}>
           <div className="card" style={{ width: "100%", maxWidth: "560px", borderRadius: "var(--radius-lg)", padding: "0", maxHeight: "100%", overflowY: "auto", boxShadow: "0 20px 60px rgba(0,0,0,0.3)", display: "flex", flexDirection: "column", background: "var(--background-card)" }}>
 
@@ -661,7 +667,7 @@ export default function DashboardOrdersPage() {
             </div>
           </div>
         </div>
-      )}
+      , document.body)}
     </>
   );
 }
