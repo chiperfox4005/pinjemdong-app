@@ -122,36 +122,27 @@ export default function Navbar() {
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "8px",
             textDecoration: "none",
             flexShrink: 0,
           }}
         >
-          <div
-            style={{
-              width: "36px",
-              height: "36px",
-              borderRadius: "var(--radius-md)",
-              background: "var(--primary-gradient)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "1.1rem",
-              boxShadow: "var(--shadow-glow)",
-            }}
-          >
-            📦
-          </div>
-          <span
-            className="gradient-text hidden sm:inline"
-            style={{
-              fontSize: "1.3rem",
-              fontWeight: 800,
-              letterSpacing: "-0.02em",
-            }}
-          >
-            pinjemdong
-          </span>
+          {/* Logo Mobile (Pendek) */}
+          <img 
+            src="/logo-mobile.png" 
+            alt="PinjemDong Logo" 
+            className="block sm:hidden" 
+            style={{ height: "36px", width: "auto", objectFit: "contain" }}
+            onError={(e) => { e.currentTarget.src = "https://placehold.co/100x100?text=Logo+Mobile" }} 
+          />
+          
+          {/* Logo Desktop (Panjang) */}
+          <img 
+            src="/logo-desktop.png" 
+            alt="PinjemDong Logo" 
+            className="hidden sm:block" 
+            style={{ height: "36px", width: "auto", objectFit: "contain" }} 
+            onError={(e) => { e.currentTarget.src = "https://placehold.co/200x50?text=Logo+Desktop" }}
+          />
         </Link>
 
         {/* Desktop Nav Links */}
