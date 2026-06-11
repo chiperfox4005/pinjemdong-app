@@ -147,6 +147,12 @@ body {
   overflow-x: hidden;
 }
 
+/* Hide Microsoft Edge native password reveal and clear buttons */
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}
+
 /*
   Theme transition: Only applied temporarily via JS when theme toggles.
   Excludes animated elements to avoid GPU conflicts.
