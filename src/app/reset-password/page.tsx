@@ -19,6 +19,8 @@ function ResetPasswordForm() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   useEffect(() => {
     if (!token || !email) {
@@ -111,32 +113,62 @@ function ResetPasswordForm() {
 
       <div>
         <label style={{ fontSize: "0.85rem", fontWeight: 700, marginBottom: "8px", display: "block" }}>Password Baru</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Minimal 8 karakter"
-          style={{ width: "100%", padding: "12px 16px", borderRadius: "var(--radius-md)", border: "1px solid var(--border)", background: "var(--background-secondary)", color: "var(--foreground)", outline: "none", transition: "border-color 0.2s" }}
-          onFocus={e => e.currentTarget.style.borderColor = "var(--primary)"}
-          onBlur={e => e.currentTarget.style.borderColor = "var(--border)"}
-          required
-          disabled={!token || !email}
-        />
+        <div style={{ position: "relative" }}>
+          <input
+            type={showPassword ? "text" : "password"}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Minimal 8 karakter"
+            style={{ width: "100%", padding: "12px 16px", paddingRight: "40px", borderRadius: "var(--radius-md)", border: "1px solid var(--border)", background: "var(--background-secondary)", color: "var(--foreground)", outline: "none", transition: "border-color 0.2s" }}
+            onFocus={e => e.currentTarget.style.borderColor = "var(--primary)"}
+            onBlur={e => e.currentTarget.style.borderColor = "var(--border)"}
+            required
+            disabled={!token || !email}
+          />
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            disabled={!token || !email}
+            style={{ position: "absolute", right: "12px", top: "50%", transform: "translateY(-50%)", background: "none", border: "none", cursor: (!token || !email) ? "not-allowed" : "pointer", color: "var(--foreground-muted)", display: "flex", alignItems: "center", justifyContent: "center", padding: "4px" }}
+            aria-label={showPassword ? "Sembunyikan password" : "Tampilkan password"}
+          >
+            {showPassword ? (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24M1 1l22 22"/></svg>
+            ) : (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            )}
+          </button>
+        </div>
       </div>
 
       <div>
         <label style={{ fontSize: "0.85rem", fontWeight: 700, marginBottom: "8px", display: "block" }}>Konfirmasi Password Baru</label>
-        <input
-          type="password"
-          value={passwordConfirmation}
-          onChange={(e) => setPasswordConfirmation(e.target.value)}
-          placeholder="Ketik ulang password baru"
-          style={{ width: "100%", padding: "12px 16px", borderRadius: "var(--radius-md)", border: "1px solid var(--border)", background: "var(--background-secondary)", color: "var(--foreground)", outline: "none", transition: "border-color 0.2s" }}
-          onFocus={e => e.currentTarget.style.borderColor = "var(--primary)"}
-          onBlur={e => e.currentTarget.style.borderColor = "var(--border)"}
-          required
-          disabled={!token || !email}
-        />
+        <div style={{ position: "relative" }}>
+          <input
+            type={showConfirmPassword ? "text" : "password"}
+            value={passwordConfirmation}
+            onChange={(e) => setPasswordConfirmation(e.target.value)}
+            placeholder="Ketik ulang password baru"
+            style={{ width: "100%", padding: "12px 16px", paddingRight: "40px", borderRadius: "var(--radius-md)", border: "1px solid var(--border)", background: "var(--background-secondary)", color: "var(--foreground)", outline: "none", transition: "border-color 0.2s" }}
+            onFocus={e => e.currentTarget.style.borderColor = "var(--primary)"}
+            onBlur={e => e.currentTarget.style.borderColor = "var(--border)"}
+            required
+            disabled={!token || !email}
+          />
+          <button
+            type="button"
+            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+            disabled={!token || !email}
+            style={{ position: "absolute", right: "12px", top: "50%", transform: "translateY(-50%)", background: "none", border: "none", cursor: (!token || !email) ? "not-allowed" : "pointer", color: "var(--foreground-muted)", display: "flex", alignItems: "center", justifyContent: "center", padding: "4px" }}
+            aria-label={showConfirmPassword ? "Sembunyikan password" : "Tampilkan password"}
+          >
+            {showConfirmPassword ? (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24M1 1l22 22"/></svg>
+            ) : (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            )}
+          </button>
+        </div>
       </div>
 
       <button 
