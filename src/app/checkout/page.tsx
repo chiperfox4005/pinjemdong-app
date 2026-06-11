@@ -664,7 +664,7 @@ export default function CheckoutPage() {
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                 Tanggal & Pengiriman
               </h3>
-              <div className="responsive-grid" style={{ marginBottom: "24px" }}>
+              <div className="responsive-grid" style={{ gap: "16px", marginBottom: "24px" }}>
                 <div>
                   <label style={{ fontSize: "0.85rem", fontWeight: 600, marginBottom: "8px", display: "block", color: "var(--foreground-secondary)" }}>Tanggal Mulai</label>
                   <input type="date" value={startDate} min={todayStr} onChange={(e) => {
@@ -686,6 +686,32 @@ export default function CheckoutPage() {
                     onFocus={e => e.currentTarget.style.borderColor = "var(--primary)"}
                     onBlur={e => e.currentTarget.style.borderColor = "var(--border)"}
                   />
+                </div>
+                <div>
+                  <label style={{ fontSize: "0.85rem", fontWeight: 600, marginBottom: "8px", display: "block", color: "var(--foreground-secondary)" }}>Jam Ambil</label>
+                  <select 
+                    value={pickupTime} 
+                    onChange={(e) => {
+                      setPickupTime(e.target.value);
+                      localStorage.setItem("pinjemdong-times", JSON.stringify({ pickup: e.target.value, return: returnTime }));
+                    }}
+                    style={{ width: "100%", padding: "14px 16px", borderRadius: "var(--radius-md)", border: "1.5px solid var(--border)", background: "var(--background-elevated)", color: "var(--foreground)", outline: "none", fontSize: "0.95rem", transition: "border-color 0.2s" }}
+                  >
+                    {["08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"].map(t => <option key={t} value={t}>{t}</option>)}
+                  </select>
+                </div>
+                <div>
+                  <label style={{ fontSize: "0.85rem", fontWeight: 600, marginBottom: "8px", display: "block", color: "var(--foreground-secondary)" }}>Jam Kembali</label>
+                  <select 
+                    value={returnTime} 
+                    onChange={(e) => {
+                      setReturnTime(e.target.value);
+                      localStorage.setItem("pinjemdong-times", JSON.stringify({ pickup: pickupTime, return: e.target.value }));
+                    }}
+                    style={{ width: "100%", padding: "14px 16px", borderRadius: "var(--radius-md)", border: "1.5px solid var(--border)", background: "var(--background-elevated)", color: "var(--foreground)", outline: "none", fontSize: "0.95rem", transition: "border-color 0.2s" }}
+                  >
+                    {["08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"].map(t => <option key={t} value={t}>{t}</option>)}
+                  </select>
                 </div>
               </div>
 
