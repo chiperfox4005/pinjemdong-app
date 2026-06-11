@@ -201,7 +201,8 @@ export default function DashboardOrdersPage() {
   }
 
   return (
-    <div className="animate-fade-in">
+    <>
+      <div className="animate-fade-in">
       {rentals.length === 0 ? (
         <div style={{ textAlign: "center", padding: "60px 20px", color: "var(--foreground-muted)" }}>
           <div style={{ fontSize: "4rem", marginBottom: "16px" }}>📭</div>
@@ -333,6 +334,7 @@ export default function DashboardOrdersPage() {
           })}
         </div>
       )}
+      </div>
 
       {/* Review Modal */}
       {reviewModal && (
@@ -660,6 +662,6 @@ export default function DashboardOrdersPage() {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }
