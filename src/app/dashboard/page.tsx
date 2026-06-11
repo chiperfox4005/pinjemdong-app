@@ -404,8 +404,8 @@ export default function DashboardOrdersPage() {
 
       {/* Payment Modal */}
       {payModal && (
-        <div onClick={(e) => { if (e.target === e.currentTarget) { setPayModal(null); setPayMsg(""); setPayProof(null); setPayHistory([]); setPaySummary(null); }}} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 9999, padding: "16px" }}>
-          <div className="card" style={{ width: "100%", maxWidth: "560px", borderRadius: "var(--radius-lg)", padding: "0", maxHeight: "92vh", overflowY: "auto", boxShadow: "0 20px 60px rgba(0,0,0,0.3)" }}>
+        <div onClick={(e) => { if (e.target === e.currentTarget) { setPayModal(null); setPayMsg(""); setPayProof(null); setPayHistory([]); setPaySummary(null); }}} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 9999, padding: "80px 16px 24px 16px" }}>
+          <div className="card" style={{ width: "100%", maxWidth: "560px", borderRadius: "var(--radius-lg)", padding: "0", maxHeight: "100%", overflowY: "auto", boxShadow: "0 20px 60px rgba(0,0,0,0.3)", display: "flex", flexDirection: "column", background: "var(--background-card)" }}>
 
             {/* Header */}
             <div style={{ padding: "24px 28px 20px", borderBottom: "1px solid var(--border)", position: "sticky", top: 0, background: "var(--background-card)", zIndex: 2, borderRadius: "var(--radius-lg) var(--radius-lg) 0 0" }}>
