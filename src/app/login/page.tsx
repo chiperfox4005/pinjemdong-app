@@ -360,7 +360,7 @@ function LoginForm() {
 }
 
 export default function LoginPage() {
-  const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || "";
+  const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || "unconfigured-client-id";
 
   return (
     <GoogleOAuthProvider clientId={clientId}>
