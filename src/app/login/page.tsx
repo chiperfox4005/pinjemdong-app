@@ -150,11 +150,11 @@ function LoginForm() {
         {/* Header */}
         <div style={{ marginBottom: "32px" }}>
           <img 
-            src="/logo-dekstop.webp" 
+            src="/logo.webp" 
             alt="PinjemDong Logo" 
             className="dark-invert" 
             style={{ height: "48px", width: "auto", objectFit: "contain", marginBottom: "20px" }}
-            onError={(e) => { e.currentTarget.src = "https://placehold.co/200x50?text=Logo+Desktop" }}
+            onError={(e) => { e.currentTarget.src = "https://placehold.co/200x50?text=Logo" }}
           />
           <h1 style={{ fontSize: "2rem", fontWeight: 800, letterSpacing: "-0.02em" }}>
             {isLogin ? "Selamat Datang Kembali" : "Buat Akun Baru"}

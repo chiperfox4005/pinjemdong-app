@@ -59,11 +59,11 @@ export default function ForgotPasswordPage() {
         
         <div style={{ textAlign: "center", marginBottom: "32px" }}>
           <img 
-            src="/logo-dekstop.webp" 
+            src="/logo.webp" 
             alt="PinjemDong Logo" 
             className="dark-invert" 
             style={{ height: "48px", width: "auto", objectFit: "contain", margin: "0 auto 20px", display: "block" }}
-            onError={(e) => { e.currentTarget.src = "https://placehold.co/200x50?text=Logo+Desktop" }}
+            onError={(e) => { e.currentTarget.src = "https://placehold.co/200x50?text=Logo" }}
           />
           <h1 style={{ fontSize: "1.8rem", fontWeight: 900, marginBottom: "8px", letterSpacing: "-0.02em" }}>Lupa Password</h1>
           <p style={{ color: "var(--foreground-muted)", fontSize: "0.95rem" }}>

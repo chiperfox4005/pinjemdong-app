@@ -25,6 +25,9 @@ export const metadata: Metadata = {
     description: "Platform penyewaan barang #1 di Indonesia.",
     siteName: "pinjemdong",
   },
+  icons: {
+    icon: "/ikon.webp",
+  },
 };
 
 export const viewport: Viewport = {
