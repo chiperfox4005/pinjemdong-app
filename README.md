@@ -2,6 +2,12 @@
 
 PinjemDong merupakan aplikasi berbasis web yang dirancang untuk mendukung proses peminjaman dan pengelolaan barang secara lebih praktis dan terstruktur. Aplikasi ini dibangun menggunakan teknologi frontend modern dengan fokus pada performa, kemudahan penggunaan, dan pengalaman pengguna yang responsif.
 
+## Preview
+
+<p align="center">
+  <img src="./preview/homepage.png" alt="PinjemDong Preview" width="900">
+</p>
+
 ## Features
 
 * Antarmuka modern dan responsif
@@ -62,6 +68,6 @@ https://github.com/chiperfox4005/pinjemdong-app
 
 ## License
 
-Project ini dikembangkan untuk kebutuhan pembelajaran, eksplorasi dan teknologi..
+Project ini dikembangkan untuk kebutuhan pembelajaran, eksplorasi, dan pengembangan teknologi.
 
 © 2026 PinjemDong
