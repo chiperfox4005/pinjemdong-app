@@ -1,27 +1,39 @@
 # PinjemDong
 
-PinjemDong merupakan aplikasi berbasis web yang dirancang untuk mendukung proses peminjaman dan pengelolaan barang secara lebih praktis dan terstruktur. Aplikasi ini dibangun menggunakan teknologi frontend modern dengan fokus pada performa, kemudahan penggunaan, dan pengalaman pengguna yang responsif.
+PinjemDong adalah aplikasi berbasis web yang dikembangkan untuk mendukung proses peminjaman dan pengelolaan barang secara lebih praktis, terstruktur, dan mudah digunakan.  
+Project ini dibangun menggunakan teknologi frontend modern dengan fokus pada performa, responsivitas, serta pengalaman pengguna yang lebih baik.
+
+---
 
 ## Preview
 
 <p align="center">
-  <img src="./preview/homepage.png" alt="PinjemDong Preview" width="900">
+  <img src="https://raw.githubusercontent.com/chiperfox4005/pinjemdong-app/main/screencapture-localhost-3000-2026-06-16-13_29_12.png" alt="PinjemDong Preview" width="100%">
 </p>
+
+---
 
 ## Features
 
-* Antarmuka modern dan responsif
-* Eksplorasi dan pengelolaan data barang
-* Alur peminjaman yang sederhana dan interaktif
-* Struktur aplikasi yang terorganisir dan mudah dikembangkan
+- Responsive dan modern user interface  
+- Eksplorasi serta pengelolaan data barang  
+- Alur peminjaman yang sederhana dan intuitif  
+- Struktur project yang terorganisir dan mudah dikembangkan  
+- Mendukung pengembangan dan pemeliharaan berkelanjutan  
+
+---
 
 ## Tech Stack
 
-* Next.js
-* React
-* TypeScript
-* Tailwind CSS
-* Node.js
+| Category | Technology |
+|----------|------------|
+| Framework | Next.js |
+| Library | React |
+| Language | TypeScript |
+| Styling | Tailwind CSS |
+| Runtime | Node.js |
+
+---
 
 ## Getting Started
 
@@ -49,25 +61,23 @@ Jalankan development server:
 npm run dev
 ```
 
-Akses aplikasi melalui:
+Buka aplikasi melalui:
 
 ```text
 http://localhost:3000
 ```
 
+---
+
 ## Contributors
 
-* FIKRY MUMTAZ PRATAMA
-* Kukur Dell
+- FIKRY MUMTAZ PRATAMA  
+- Kukur Dell  
 
-## Repository
-
-```text
-https://github.com/chiperfox4005/pinjemdong-app
-```
+---
 
 ## License
 
-Project ini dikembangkan untuk kebutuhan pembelajaran, eksplorasi, dan pengembangan teknologi.
+Project ini dikembangkan untuk kebutuhan pembelajaran, eksplorasi teknologi, dan pengembangan portofolio.
 
 © 2026 PinjemDong
